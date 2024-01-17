@@ -47,5 +47,5 @@ df <- data.frame(
 # Create a stacked barplot with ggplot2
 ggplot(df, aes(x = plant, y = value, fill = factor(group))) +
   geom_bar(stat = "identity", position = "stack") +
-  labs(title = "siRNA Length Distribution", x = "\n", y = "% of siRNA counts", fill = "Group") + scale_fill_manual(values = c("black","#003F5C","#665191","#A05195","#D45087","#F95D6A","#FF7C43","#FFA600"))
+  labs(title = "Total siRNA Length Distribution", x = "\n", y = "% of siRNA counts", fill = "siRNA Length") + scale_fill_manual(values = c("black","#003F5C","#665191","#A05195","#D45087","#F95D6A","#FF7C43","#FFA600"))
 
