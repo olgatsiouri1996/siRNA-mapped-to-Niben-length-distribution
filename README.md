@@ -37,6 +37,8 @@ loaded via a namespace (and not attached):
 [25] colorspace_2.1-0 rlang_1.1.1
 ```  
 ## Usage 
-1. run `bowtie-build` to index the *Nicotiana benthamiana* mRNA file
-2. run the `by_length.sh` and `map_to_genome.sh` to retrieve 21-28nt reads and map to the *Nicotiana benthamiana* genome
-3. run `length_distribution_mapped_to_niben_transcripts_calculation.R` in Rstudio to plot the results(put the groups.txt file on the same folder as the rest of the .txt files)
+1. Go to  `niben/` with `cd niben` and run `bowtie-build niben.fasta niben` to index the *Nicotiana benthamiana* mRNA file
+2. Put the niben folder in the folder you have the quality trimmed fastq files
+3. Run the `by_length.sh` and then `map_to_transcriptome.sh` to retrieve 21-28nt reads and map to the *Nicotiana benthamiana* transcriptome
+4. Put the groups.txt file on the same folder as the rest of the .txt files
+3. Run `length_distribution_mapped_to_niben_transcripts_calculation.R` in Rstudio to plot the results

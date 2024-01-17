@@ -1,8 +1,10 @@
 #!/bin/bash
 for i in `cat list`
 do
-echo "Running of bowtie from unaligned mature miRNA reads to genome as reference (Exiqon style)"
+echo "Running of bowtie from unaligned sRNA reads to transcriptome as reference"
+# map to transcriptome
 bowtie -v 0  --norc --best --strata -a --threads 4 niben/niben ${i}"_21.fastq.gz" --al ${i}"-21nt-niben-aligned.fastq" -S ${i}"-21nt-niben-aligned.sam"
+# count fastq records per sample
 grep -c "^@" ${i}"-21nt-niben-aligned.fastq" >> num-21nt-niben-aligned.txt
 bowtie -v 0  --norc --best --strata -a --threads 4 niben/niben ${i}"_22.fastq.gz" --al ${i}"-22nt-niben-aligned.fastq" -S ${i}"-22nt-niben-aligned.sam"
 grep -c "^@" ${i}"-22nt-niben-aligned.fastq" >> num-22nt-niben-aligned.txt
