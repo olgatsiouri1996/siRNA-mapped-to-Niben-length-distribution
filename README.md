@@ -4,8 +4,9 @@ The Nicotiana benthamiana v2.6.1 transcriptome was downloaded from [solgenomics.
 ## Dependences 
 1. cutadapt v2.8
 2. bowtie v1.2.3
-3. zgrep,grep
-4. R sessioninfo():
+3. zgrep v1.10, grep v3.4
+4. wsl1 with ubuntu2004 running
+5. R sessionInfo():
 ```Shell
 R version 4.3.0 (2023-04-21 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -38,4 +39,4 @@ loaded via a namespace (and not attached):
 ## Usage 
 1. run `bowtie-build` to index the *Nicotiana benthamiana* mRNA file
 2. run the `by_length.sh` and `map_to_genome.sh` to retrieve 21-28nt reads and map to the *Nicotiana benthamiana* genome
-3. run `length_distribution_mapped_to_niben_transcripts_calculation.R` in rstudio to plot the results(put the groups.txt file on the same folder as the rest)
+3. run `length_distribution_mapped_to_niben_transcripts_calculation.R` in Rstudio to plot the results(put the groups.txt file on the same folder as the rest)
