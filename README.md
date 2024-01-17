@@ -2,10 +2,10 @@ This pipeline describes the collection,calculation and plotting of siRNA length 
 The Nicotiana benthamiana v2.6.1 transcriptome was downloaded from [solgenomics.net](https://solgenomics.net/ftp/genomes/Nicotiana_benthamianaV261/Nbenthamiana_Annotation/)
 
 ## Dependences 
-1. cutadapt v2.8
-2. bowtie v1.2.3
-3. zgrep v1.10, grep v3.4
-4. wsl1 with ubuntu2004 running
+1. wsl1 with ubuntu2004 running
+2. cutadapt v2.8
+3. bowtie v1.2.3
+4. grep v3.4
 5. R sessionInfo():
 ```R
 R version 4.3.0 (2023-04-21 ucrt)
