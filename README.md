@@ -7,7 +7,7 @@ The Nicotiana benthamiana v2.6.1 transcriptome was downloaded from [solgenomics.
 3. zgrep v1.10, grep v3.4
 4. wsl1 with ubuntu2004 running
 5. R sessionInfo():
-```Shell
+```R
 R version 4.3.0 (2023-04-21 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 Running under: Windows 10 x64 (build 19045)
