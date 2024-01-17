@@ -39,6 +39,6 @@ loaded via a namespace (and not attached):
 ## Usage 
 1. Go to  `niben/` with `cd niben` and run `bowtie-build niben.fasta niben` to index the *Nicotiana benthamiana* mRNA file
 2. Put the niben folder in the folder you have the quality trimmed fastq files
-3. Run the `by_length.sh` and then `map_to_transcriptome.sh` to retrieve 21-28nt reads and map to the *Nicotiana benthamiana* transcriptome
+3. Run the  `map_to_transcriptome.sh` to map to the *Nicotiana benthamiana* transcriptome and retrieve 21-28nt reads
 4. Put the groups.txt file on the same folder as the rest of the .txt files
 3. Run `length_distribution_mapped_to_niben_transcripts_calculation.R` in Rstudio to plot the results
