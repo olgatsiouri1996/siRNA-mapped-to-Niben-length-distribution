@@ -3,10 +3,10 @@ The Nicotiana benthamiana v2.6.1 transcriptome was downloaded from [solgenomics.
 
 ## Dependences 
 1. wsl1 with ubuntu2004 running
-2. cutadapt v2.8
-3. bowtie v1.2.3
-4. grep v3.4
-5. R sessionInfo():
+2. cutadapt `v2.8`
+3. bowtie `v1.2.3`
+4. grep `v3.4`
+5. R `sessionInfo()`:
 ```R
 R version 4.3.0 (2023-04-21 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -35,7 +35,8 @@ loaded via a namespace (and not attached):
 [13] cli_3.6.1        fansi_1.0.4      scales_1.2.1     grid_4.3.0       vctrs_0.6.2      withr_2.5.0     
 [19] compiler_4.3.0   purrr_1.0.1      rstudioapi_0.14  tools_4.3.0      munsell_0.5.0    pillar_1.9.0    
 [25] colorspace_2.1-0 rlang_1.1.1
-```  
+``` 
+6. Rstudio `2023.03.0 Build 386` 
 ## Usage 
 1. Go to  `niben/` with `cd niben` and run `bowtie-build niben.fasta niben` to index the *Nicotiana benthamiana* mRNA file
 2. Put the niben folder in the folder you have the quality trimmed fastq files
