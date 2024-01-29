@@ -1,7 +1,7 @@
 #!/bin/bash
 for i in `cat list`
 do
-echo "Running of bowtie from unaligned sRNA reads to genome as reference"
+echo "Running of bowtie from unaligned sRNA reads to transcriptome as reference"
 # map to nicotiana benthamiana transcriptome
 bowtie -v 0  --norc --best --strata -a --threads 4 niben/niben ${i}"-SMALLRNA_A-smallRNA_Seq.fastq.gz" --al all/${i}"-niben-aligned.fastq"  -S all/${i}"-SMALLRNA_A-smallRNA_Seq.sam"
 # collect 21-28 nt
