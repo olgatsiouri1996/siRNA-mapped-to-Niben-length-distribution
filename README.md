@@ -1,45 +1,30 @@
 This pipeline describes the collection,calculation and plotting of siRNA length distribution that map to the *Nicotiana benthamiana* transcriptome
 The Nicotiana benthamiana v2.6.1 transcriptome was downloaded from [solgenomics.net](https://solgenomics.net/ftp/genomes/Nicotiana_benthamianaV261/Nbenthamiana_Annotation/)
 
-## Dependences 
-1. wsl1 with ubuntu2004 running
-2. cutadapt `v2.8`
-3. bowtie `v1.2.3`
-4. grep `v3.4`
-5. R `sessionInfo()`:
-```R
-R version 4.3.0 (2023-04-21 ucrt)
-Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 19045)
-
-Matrix products: default
-
-
-locale:
-[1] LC_COLLATE=English_United Kingdom.utf8  LC_CTYPE=English_United Kingdom.utf8   
-[3] LC_MONETARY=English_United Kingdom.utf8 LC_NUMERIC=C                           
-[5] LC_TIME=English_United Kingdom.utf8    
-
-time zone: Europe/Athens
-tzcode source: internal
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] ggplot2_3.4.2 tidyr_1.3.0   dplyr_1.1.2  
-
-loaded via a namespace (and not attached):
- [1] labeling_0.4.2   utf8_1.2.3       R6_2.5.1         tidyselect_1.2.0 farver_2.1.1     magrittr_2.0.3  
- [7] gtable_0.3.3     glue_1.6.2       tibble_3.2.1     pkgconfig_2.0.3  generics_0.1.3   lifecycle_1.0.3 
-[13] cli_3.6.1        fansi_1.0.4      scales_1.2.1     grid_4.3.0       vctrs_0.6.2      withr_2.5.0     
-[19] compiler_4.3.0   purrr_1.0.1      rstudioapi_0.14  tools_4.3.0      munsell_0.5.0    pillar_1.9.0    
-[25] colorspace_2.1-0 rlang_1.1.1
-``` 
-6. Rstudio `2023.03.0 Build 386` 
+## Dependences/Installation
+1. [wsl](https://learn.microsoft.com/en-us/windows/wsl/install) with ubuntu2004 running or any machine running ubuntu
+2. cutadapt: 
+```shell
+sudo apt update -y
+sudo apt install -y cutadapt
+```
+3. bowtie
+```shell
+sudo apt update -y
+sudo apt install -y bowtie
+```
+5. [docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
+6. docker container with R and data analysis packages:
+```shell
+docker pull pegi3s/r_data-analysis
+```
 ## Usage 
 1. Go to  `niben/` with `cd niben` and run `bowtie-build niben.fasta niben` to index the *Nicotiana benthamiana* mRNA file
 2. Put the niben folder in the folder you have the quality trimmed fastq files
-3. Run the  `map_to_transcriptome.sh` to map to the *Nicotiana benthamiana* transcriptome and retrieve 21-28nt reads
-4. Put the groups.txt file on the same folder as the rest of the .txt files
-3. Run `length_distribution_mapped_to_niben_transcripts_calculation.R` in Rstudio to plot the results
+3. convert the map_to_transcriptome.sh script to executable: `chmod +x map_to_transcriptome.sh`
+4. Run `./map_to_transcriptome.sh` to map to the *Nicotiana benthamiana* transcriptome and retrieve 21-28nt reads
+5. Put the groups.txt and .R files on the same folder as the rest of the .txt files
+6. Run the following to plot the results(in this example all txt files and the .R script are in the `/home/linuxubuntu2004/Desktop` folder): 
+```shell
+docker run --rm -it -v /home/linuxubuntu2004/Desktop:/data pegi3s/r_data-analysis Rscript /data length_distribution_mapped_to_niben_transcripts_calculation.R
+``` 
