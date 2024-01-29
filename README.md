@@ -2,7 +2,7 @@ This pipeline describes the collection,calculation and plotting of siRNA length 
 The Nicotiana benthamiana v2.6.1 transcriptome was downloaded from [solgenomics.net](https://solgenomics.net/ftp/genomes/Nicotiana_benthamianaV261/Nbenthamiana_Annotation/)
 
 ## Dependences/Installation
-1. [wsl](https://learn.microsoft.com/en-us/windows/wsl/install) with ubuntu2004 running or any machine running ubuntu
+1. [wsl](https://learn.microsoft.com/en-us/windows/wsl/install) with ubuntu running or any machine running ubuntu
 2. cutadapt: 
 ```shell
 sudo apt update -y
@@ -13,8 +13,8 @@ sudo apt install -y cutadapt
 sudo apt update -y
 sudo apt install -y bowtie
 ```
-5. [docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
-6. docker container with R and data analysis packages:
+4. [docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
+5. docker container with R and data analysis packages:
 ```shell
 docker pull pegi3s/r_data-analysis
 ```
