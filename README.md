@@ -16,15 +16,7 @@ The sinra_21_28nt_length_calculator_all performs the following analysis:
 1). uses `bowtie-build` to build indexes of user specified fasta file   
 2). runs `bowtie -v 0  --norc --best --strata -a` per each sample(samplenames specified in `list`)  
 3). selects siRNAs with length 21-28 nt in 8 files per length  with `cutadapt` for each sample  
-4). uses grep for each of the 21nt to 28nt  to calculate the number of reads per sample:  
-
-```shell
-for j in {21..28}; do
-        cutadapt -m $j -M $j -o /output/${i}_$j.fastq /output/${i}-aligned.fastq
-        grep -c "^@" /output/${i}_$j.fastq >> /output/num-${j}nt-aligned.txt
-    done
-```
-were i is each sample in `list`
+4). uses grep for each of the 21nt to 28nt  to calculate the number of reads per sample
 
 The final result is 8 `.txt` files with a `num` prefix, 1 for each length, where each line is each sample in `list`
 To run the whole pipeline run the following:
