@@ -33,7 +33,7 @@ To run the whole pipeline run the following:
 docker run -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock/niben:/database -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock:/input -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock:/output -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock:/list olgatsiouri/sinra_21_28nt_length_calculator_all niben 4
 
 ```
-The format for linux is:
+The format for linux and macos is:
 ```shell
 docker run -v /path/to/database:/database -v /path/to/input:/input -v /path/to/output:/output -v /path/to/list:/list olgatsiouri/sinra_21_28nt_length_calculator_all database_name thread_count
 ```
@@ -46,6 +46,6 @@ were `/path/to/database` is the path to the folder containing the *Nicotiana ben
 2. Put the groups.txt and .R files on the same folder as the rest of the num*.txt files
 3. Run the following to plot the results(in this example all txt files and the .R script are in the `/home/linuxubuntu2004/Desktop` folder): 
 ```shell
-docker run --rm -it -v /home/linuxubuntu2004/Desktop:/data pegi3s/r_data-analysis Rscript /data length_distribution_mapped_to_niben_transcripts_calculation.R
+docker run --rm -it -v /home/linuxubuntu2004/Desktop:/data pegi3s/r_data-analysis Rscript /data/length_distribution_mapped_to_niben_transcripts_calculation.R
 ``` 
 the group.txt file and dataframe in line 41 of `length_distribution_mapped_to_niben_transcripts_calculation.R` can be modified for use in other projects
