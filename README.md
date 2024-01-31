@@ -2,29 +2,50 @@ This pipeline describes the collection,calculation and plotting of siRNA length 
 The Nicotiana benthamiana v2.6.1 transcriptome was downloaded from [solgenomics.net](https://solgenomics.net/ftp/genomes/Nicotiana_benthamianaV261/Nbenthamiana_Annotation/)
 
 ## Dependences/Installation
-1. Ubuntu OS
-2. cutadapt: 
+1. docker
+2. docker container used to retrieve the 21-28nt siRNA counts per samples:
 ```shell
-sudo apt update -y
-sudo apt install -y cutadapt
+docker pull olgatsiouri/sinra_21_28nt_length_calculator_all
 ```
-3. bowtie
-```shell
-sudo apt update -y
-sudo apt install -y bowtie
-```
-4. [docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
-5. docker container with R and data analysis packages:
+3. docker container used to plot the data:
 ```shell
 docker pull pegi3s/r_data-analysis
 ```
 ## Usage 
-1. Go to  `niben/` with `cd niben` and run `bowtie-build niben.fasta niben` to index the *Nicotiana benthamiana* mRNA file
-2. Put the niben folder in the folder you have the quality trimmed fastq files
-3. convert the map_to_transcriptome.sh script to executable: `chmod +x map_to_transcriptome.sh`
-4. Run `./map_to_transcriptome.sh` to map to the *Nicotiana benthamiana* transcriptome and retrieve 21-28nt reads
-5. Put the groups.txt and .R files on the same folder as the rest of the .txt files
-6. Run the following to plot the results(in this example all txt files and the .R script are in the `/home/linuxubuntu2004/Desktop` folder): 
+The sinra_21_28nt_length_calculator_all performs the following analysis:
+1). uses `bowtie-build` to build indexes of user specified fasta file 
+2). runs `bowtie -v 0  --norc --best --strata -a` per each sample(samplenames specified in `list`)
+3). selects siRNAs with length 21-28 nt in 8 files per length  with `cutadapt` for each sample
+4). uses grep for each of the 21nt to 28nt  to calculate the number of reads per sample:
+
+```shell
+for j in {21..28}; do
+        cutadapt -m $j -M $j -o /output/${i}_$j.fastq /output/${i}-aligned.fastq
+        grep -c "^@" /output/${i}_$j.fastq >> /output/num-${j}nt-aligned.txt
+    done
+```
+were i is each sample in `list`
+
+The final result is 8 `.txt` files with a `num` prefix, 1 for each length, where each line is each sample in `list`
+To run the whole pipeline run the following:
+1. run the sinra_21_28nt_length_calculator_all container:
+```shell
+docker run -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock/niben:/database -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock:/input -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock:/output -v /media/linuxubuntu2004/INTENSO/loukia/cleaned/dock:/list olgatsiouri/sinra_21_28nt_length_calculator_all niben 4
+
+```
+The format for linux is:
+```shell
+docker run -v /path/to/database:/database -v /path/to/input:/input -v /path/to/output:/output -v /path/to/list:/list olgatsiouri/sinra_21_28nt_length_calculator_all database_name thread_count
+```
+The format for windows is:
+```shell
+docker run -v C:\path\to\database:/database -v C:\path\to\input:/input -v C:\path\to\output:/output -v C:\path\to\list:/list olgatsiouri/sinra_21_28nt_length_calculator_all database_name thread_count
+```
+were `/path/to/database` is the path to the folder containing the *Nicotiana benthamiana* transcriptome, `/path/to/input` is the path to the folder containing trimmed fastq.gz files to be mapped and `database_name` is the name of the indexed transcriptome files
+
+2. Put the groups.txt and .R files on the same folder as the rest of the num*.txt files
+3. Run the following to plot the results(in this example all txt files and the .R script are in the `/home/linuxubuntu2004/Desktop` folder): 
 ```shell
 docker run --rm -it -v /home/linuxubuntu2004/Desktop:/data pegi3s/r_data-analysis Rscript /data length_distribution_mapped_to_niben_transcripts_calculation.R
 ``` 
+the group.txt file and dataframe in line 41 of `length_distribution_mapped_to_niben_transcripts_calculation.R` can be modified for use in other projects

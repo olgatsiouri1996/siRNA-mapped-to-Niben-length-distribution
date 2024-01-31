@@ -11,14 +11,14 @@ library(dplyr)
 summary_data <- result %>%
   group_by(groups) %>%
   summarise(
-    len21_by_sample_sum = sum(`num-21nt-niben-aligned`),
-    len22_by_sample_sum = sum(`num-22nt-niben-aligned`),
-    len23_by_sample_sum = sum(`num-23nt-niben-aligned`),
-    len24_by_sample_sum = sum(`num-24nt-niben-aligned`),
-    len25_by_sample_sum = sum(`num-25nt-niben-aligned`),
-    len26_by_sample_sum = sum(`num-26nt-niben-aligned`),
-    len27_by_sample_sum = sum(`num-27nt-niben-aligned`),
-    len28_by_sample_sum = sum(`num-28nt-niben-aligned`),
+    len21_by_sample_sum = sum(`num-21nt-aligned`),
+    len22_by_sample_sum = sum(`num-22nt-aligned`),
+    len23_by_sample_sum = sum(`num-23nt-aligned`),
+    len24_by_sample_sum = sum(`num-24nt-aligned`),
+    len25_by_sample_sum = sum(`num-25nt-aligned`),
+    len26_by_sample_sum = sum(`num-26nt-aligned`),
+    len27_by_sample_sum = sum(`num-27nt-aligned`),
+    len28_by_sample_sum = sum(`num-28nt-aligned`),
   )
 
 # calculate the sum of reads per each biological condition
