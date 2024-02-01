@@ -33,7 +33,7 @@ The format for windows is:
 ```shell
 docker run -v C:\path\to\database:/database -v C:\path\to\input:/input -v C:\path\to\output:/output -v C:\path\to\list:/list olgatsiouri/sinra_21_28nt_length_calculator_all database_name thread_count
 ```
-were `/path/to/database` is the path to the folder containing the *Nicotiana benthamiana* transcriptome, `/path/to/input` is the path to the folder containing trimmed fastq.gz files to be mapped and `database_name` is the name of the indexed transcriptome files
+where `/path/to/database` is the path to the folder containing the *Nicotiana benthamiana* transcriptome, `/path/to/input` is the path to the folder containing trimmed fastq.gz files to be mapped and `database_name` is the name of the indexed transcriptome files
 
 2. Put the groups.txt and .R files on the same folder as the rest of the num*.txt files
 3. Run the following to plot the results(in this example all txt files and the .R script are in the `/home/linuxubuntu2004/Desktop` folder): 
