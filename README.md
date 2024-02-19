@@ -2,6 +2,9 @@ This pipeline describes the collection,calculation and plotting of siRNA length 
 The *Nicotiana benthamiana* v2.6.1 transcriptome was downloaded from [solgenomics.net](https://solgenomics.net/ftp/genomes/Nicotiana_benthamianaV261/Nbenthamiana_Annotation/)
 ## Citation
 When using the software cite the following:  
+***(https://github.com/olgatsiouri1996/siRNA-mapped-to-Niben-length-distribution. Kellari et al., unpublished)***
+## Publication
+When using the software cite the following publication:  
 ***Kellari L., Dalakouras A., Tsiouri O., Vletsos P., Katsaouni A., Uslu V. V. and Papadopoulou K. K. Cross-kingdom RNAi induced by a beneficial endophytic fungus to its host requires transitivity and amplification of silencing signal (unpublished)***
 ## Dependences/Installation
 1. docker
