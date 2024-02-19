@@ -5,7 +5,7 @@ table_list <-lapply(file_list,read.delim,header=F)
 result <- do.call(cbind, table_list)
 # add column names
 colnames(result) <- gsub(".txt","",file_list)
-
+# load the dplyr library
 library(dplyr)
 # Summarize by group and sample type to merge both technical replicates into 1
 summary_data <- result %>%
@@ -21,7 +21,7 @@ summary_data <- result %>%
     len28_by_sample_sum = sum(`num-28nt-aligned`),
   )
 
-# calculate the sum of reads per each biological condition
+# calculate the sum of reads per each biological condition(don't use the 1st column as it contains the group names, not numeric data)
 summary_data$total_reads_by_sample_sum <- rowSums(summary_data[ ,-1])
 # calculate the percentage of each siRNA classified by nt lenght
 fi <- summary_data %>%
@@ -32,7 +32,7 @@ fi <- summary_data %>%
 fi <- fi[ ,2:9]
 # load the tidyr library
 library(tidyr)
-# merge all columns with percentage of siRNA by nt into 1
+# merge all columns with percentage of siRNA by nt into 1 with the 1st 2nd columns etc one under the other
 df_long <- pivot_longer(fi, cols = everything(), names_to = "Original_Column", values_to = "Value")
 
 library(ggplot2)
