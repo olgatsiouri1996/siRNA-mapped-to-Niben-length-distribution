@@ -45,4 +45,4 @@ where `/path/to/database` is the path to the folder containing the *Nicotiana be
 ```shell
 docker run --rm -it -v /home/linuxubuntu2004/Desktop:/data pegi3s/r_data-analysis Rscript /data/length_distribution_mapped_to_niben_transcripts_calculation.R
 ``` 
-the group.txt file and dataframe in line 41 of `length_distribution_mapped_to_niben_transcripts_calculation.R` can be modified for use in other projects
+the group.txt file can be modified for use in other projects
