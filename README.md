@@ -5,7 +5,7 @@ When using this software cite the following:
 ***(https://github.com/olgatsiouri1996/siRNA-mapped-to-Niben-length-distribution. Kellari et al., unpublished)***
 ## Publication
 When using this software cite the following publication:  
-***Kellari L., Dalakouras A., Tsiouri O., Vletsos P., Katsaouni A., Uslu V. V. and Papadopoulou K. K. Cross-kingdom RNAi induced by a beneficial endophytic fungus to its host requires transitivity and amplification of silencing signal (unpublished)***
+***Kellari L., Dalakouras A., Tsiouri O., Vletsos P., Katsaouni A., Uslu V. V. and Papadopoulou K. K. Cross-kingdom RNAi induced by a beneficial endophytic fungus to its host requires transitivity and amplification of silencing signals (unpublished)***
 ## Dependences/Installation
 1. docker
 2. docker container used to retrieve the 21-28nt siRNA counts per samples:
