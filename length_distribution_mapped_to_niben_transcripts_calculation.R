@@ -32,7 +32,7 @@ fi <- summary_data %>%
 fi <- fi[ ,2:9]
 # load the tidyr library
 library(tidyr)
-# merge all rows with percentage of siRNA by nt into 1-column with the 1st 2nd rows etc one after the other
+# merge all rows with percentage of siRNA by nt into 1-column with the 2nd row under the 1st row etc
 # "Original_Column" contains len21-28_by_sample_sum repeated per each unique element of groups
 df_long <- pivot_longer(fi, cols = everything(), names_to = "Original_Column", values_to = "Value")
 
