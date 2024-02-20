@@ -1,7 +1,7 @@
 # list all .txt files 
 file_list <- list.files(pattern=".txt",path= ".")
 table_list <-lapply(file_list,read.delim,header=F)
-# merge the files into 1 dataframe
+# concatenate the files into 1 dataframe
 result <- do.call(cbind, table_list)
 # add column names
 colnames(result) <- gsub(".txt","",file_list)
@@ -32,7 +32,7 @@ fi <- summary_data %>%
 fi <- fi[ ,2:9]
 # load the tidyr library
 library(tidyr)
-# merge all columns with percentage of siRNA by nt into 1 with the 1st 2nd columns etc one under the other
+# merge all rows with percentage of siRNA by nt into 1-column with the 1st 2nd rows etc one after the other
 # "Original_Column" contains len21-28_by_sample_sum repeated per each unique element of groups
 df_long <- pivot_longer(fi, cols = everything(), names_to = "Original_Column", values_to = "Value")
 
